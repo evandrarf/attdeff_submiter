@@ -3,8 +3,12 @@ import requests
 
 app = Flask(__name__)
 
-SUBMITTER_URL = 'http://172.31.8.194:5000/api/v2/submit'
-TOKEN = ''
+SUBMITTER_URL = 'https://and.idcyberskills.com/api/v2/submit'
+TOKEN = open('/tmp/token.txt', 'r').read().strip()
+
+if not TOKEN:
+    print("[-] Token not found")
+    exit(1)
 
 @app.route('/submit', methods=['POST'])
 def submit():
